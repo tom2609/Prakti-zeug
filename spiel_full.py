@@ -3,15 +3,15 @@ import random
 HP1 = 50
 HP2 = 50
 gamestatus = True
-cooldown1 = 0
 block1 = 0
 block2 = 0
+special1 = 0
 
 while True:
     while gamestatus == True:
 
             #Player action
-        if cooldown1 == 0:
+        if special1 == 0:
             print("\033[36m" "Was willst du tun?")
             action = int(input("1.Angreifen; 2.Heilen" "\033[0m"))
             print("-------------------------------")
@@ -54,13 +54,27 @@ while True:
                 block1 = 1
                 print("\033[32m" "Du schützt dich hinter deinem Schild" "\033[0m")
 
+            #Player Special
+            elif action == 4:
+                special1 = 1
+                print("Du lädst deinen spezial Angriff auf")
+
             #Player wrong input
             else:
                 print("Wähle eine zulässig Zahl!")
                 print("-------------------------------")
                 break
         else:
-            print("Du setzt eine Runde aus")
+            zahl = random.randrange(15,20)
+            HP2 -= zahl
+            special1 = 0
+            print("\033[32m" "Du hast "+ str(zahl) +" Schaden geamcht")
+            if HP2 <= 0:
+                print("Du hast GEWONNEN!" "\033[0m")
+                gamestatus = False
+                break
+            else:
+                print("Der Gegner hat noch " + str(HP2) + "HP" "\033[0m")
         print("-------------------------------")
 
 
@@ -118,8 +132,11 @@ while True:
             zahl = 0
             block1 = 0
             block2 = 0
-            cooldown1 = 0
         elif restart == 2:
             break
         else:
             print("Wähle zwischen 1 und 2.")
+
+
+
+            #zahl in jedem if pro angriff
