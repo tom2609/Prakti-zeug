@@ -9,7 +9,7 @@ while True:
     while gamestatus == True:
         #Spielerphase
         print("\033[36m" "Was willst du machen?")
-        aktion = int(input("1. Angriff; 2. Heilen" "\033[0m")):
+        aktion = int(input("1. Angriff; 2. Heilen" "\033[0m"))
         if aktion == 1:
             zahl = random.randrange(1,10)
             HP2 -= zahl
